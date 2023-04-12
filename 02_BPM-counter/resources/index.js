@@ -12,15 +12,12 @@ function beat() {
   if (lastTime) { // not first button press
     elapsedTime = curTime - lastTime;
     avg = Math.round((avg * (count - 1) + elapsedTime) / count);
+    counterDisplay.textContent = Math.round(60000 / avg);
   }
 
   lastTime = curTime;  
   count ++;
 
-  counterDisplay.textContent = avg;
-  console.log("Count: " + count);
-  console.log("Cur elapsed: " + elapsedTime);
-  console.log("Cur avg: " + avg);
 }
 
 function reset() {

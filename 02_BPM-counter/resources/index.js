@@ -1,21 +1,19 @@
 let counterDisplay = document.getElementById("display");
 let count = 0;
 let curTime;
-let elapsedTime;
-let lastTime;
+let startTime;
 let avg = 0;
 
 function beat() {
   
   curTime = Date.now();
 
-  if (lastTime) { // not first button press
-    elapsedTime = curTime - lastTime;
-    avg = Math.round((avg * (count - 1) + elapsedTime) / count);
-    counterDisplay.textContent = Math.round(60000 / avg);
+  if (startTime) { // not first button press
+    counterDisplay.textContent = Math.round(60000 / ((curTime - startTime) / count));
+  } else {
+    startTime = curTime;
   }
 
-  lastTime = curTime;  
   count ++;
 
 }
@@ -23,7 +21,7 @@ function beat() {
 function reset() {
   count = 0;
   counterDisplay.textContent = count;
-  lastTime = null;
+  startTime = null;
   avg = 0;
 
 }

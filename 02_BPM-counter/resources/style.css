@@ -1,0 +1,42 @@
+:root {
+  --main-bg-color: #FFFFF3;
+  --main-txt-color: #030301;
+  --alt-bg-color: #B7AD99;
+  --accent-color-1: #00D9C0;
+  --accent-color-2: #FF4365;
+}
+
+body {
+  width: 100%;
+  text-align: center;
+  background-color: var(--main-bg-color);
+}
+
+.counter {
+  width: 400px;
+  margin: 0 auto;
+  border: 1px solid var(--main-txt-color);
+  text-align: center;
+  background-color: var(--alt-bg-color);
+  padding: 30px 0;
+}
+
+button {
+  border: 1px solid var(--main-txt-color);
+  padding: 10px 0;
+  width: 150px;
+  margin: 5px auto;
+  display: block;
+}
+
+#count-btn {
+  background: var(--accent-color-1);
+}
+
+#reset-btn {
+  background: var(--accent-color-2);
+}
+
+h1 {
+  text-decoration: underline;
+}

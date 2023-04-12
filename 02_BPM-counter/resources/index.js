@@ -17,7 +17,7 @@ function beat() {
   lastTime = curTime;  
   count ++;
 
-  counterDisplay.textContent = count;
+  counterDisplay.textContent = avg;
   console.log("Count: " + count);
   console.log("Cur elapsed: " + elapsedTime);
   console.log("Cur avg: " + avg);
@@ -26,5 +26,7 @@ function beat() {
 function reset() {
   count = 0;
   counterDisplay.textContent = count;
-  startTime = null;
+  lastTime = null;
+  avg = 0;
+
 }

@@ -1,32 +1,37 @@
 :root {
-  --main-bg-color: #FFFFF3;
-  --main-txt-color: #030301;
-  --alt-bg-color: #B7AD99;
-  --accent-color-1: #00D9C0;
-  --accent-color-2: #FF4365;
+  --main-bg-color: #B2B09B;
+  --main-txt-color: #254441;
+  --alt-bg-color: #43AA8B;
+  --accent-color-1: #FF6F59;
+  --accent-color-2: #DB504A;
 }
 
 body {
   width: 100%;
   text-align: center;
   background-color: var(--main-bg-color);
+  color: var(--main-txt-color);
 }
 
 .counter {
   width: 400px;
   margin: 0 auto;
-  border: 1px solid var(--main-txt-color);
+  border: 2px solid var(--main-txt-color);
+  border-radius: 4px;
   text-align: center;
   background-color: var(--alt-bg-color);
   padding: 30px 0;
 }
 
 button {
-  border: 1px solid var(--main-txt-color);
+  border: 2px solid var(--main-txt-color);
   padding: 10px 0;
   width: 150px;
   margin: 5px auto;
   display: block;
+  border-radius: 4px;
+  font-weight: bold;
+  color: var(--main-txt-color);
 }
 
 #count-btn {

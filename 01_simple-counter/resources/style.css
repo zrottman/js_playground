@@ -9,6 +9,7 @@
 body {
   width: 100%;
   text-align: center;
+  color: var(--main-txt-color);
   background-color: var(--main-bg-color);
 }
 
@@ -19,6 +20,7 @@ body {
   text-align: center;
   background-color: var(--alt-bg-color);
   padding: 30px 0;
+  color: var(--main-txt-color);
 }
 
 button {
@@ -27,6 +29,7 @@ button {
   width: 150px;
   margin: 5px auto;
   display: block;
+  color: var(--main-txt-color);
 }
 
 #count-btn {

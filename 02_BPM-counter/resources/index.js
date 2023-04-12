@@ -11,7 +11,7 @@ function beat() {
 
   if (lastTime) { // not first button press
     elapsedTime = curTime - lastTime;
-    avg = (avg * (count - 1) + elapsedTime) / count;
+    avg = Math.round((avg * (count - 1) + elapsedTime) / count);
   }
 
   lastTime = curTime;  

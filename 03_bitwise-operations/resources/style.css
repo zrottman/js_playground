@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  width: 600px;
+  margin: 20px auto;
+  background: yellow;
+}
+
+.byte {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.bit {
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  background: red;
+  border-radius: 25px;
+}
+
+.bit.toggle {
+  background-color: #CCC;
+}
+
+
+

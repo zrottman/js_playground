@@ -36,7 +36,6 @@ for (let byteDiv of byteDivs) {
     button.classList.add(`bit-${i}`);
     if (byteDiv.classList.contains('input')) {
       button.addEventListener("click", function () {
-        this.classList.toggle("toggle");
         if (byteDiv.classList.contains('byte-A')) {
           byteA[i] = byteA[i] ? 0 : 1;
         } else {
@@ -50,7 +49,6 @@ for (let byteDiv of byteDivs) {
 }
 
 // Create bit shift buttons
-
 for (let operatorDiv of operatorDivs) {
   if (operatorDiv.classList.contains("input")) {
     const shiftLeft = document.createElement("button");
@@ -62,10 +60,12 @@ for (let operatorDiv of operatorDivs) {
         let byteAInt = binArrToInt(byteA);
         byteAInt <<= 1;
         byteA = intToBinArr(byteAInt);
+        if (byteA.length > 8) { byteA.shift(); }
       } else {
         let byteBInt = binArrToInt(byteB);
         byteBInt <<= 1;
         byteB = intToBinArr(byteBInt);
+        if (byteB.length > 8) { byteB.shift(); }
       }
       render();
     });
@@ -112,6 +112,7 @@ function updateByteY() {
 function updateByteButtons() {
   for (let i = 0; i < 8; i++) {
     byteYBits[i].classList.toggle("toggle", byteY[i] == 1);
+
     byteABits[i].classList.toggle("toggle", byteA[i] == 1);
     byteBBits[i].classList.toggle("toggle", byteB[i] == 1);
   }
@@ -132,7 +133,9 @@ function renderInteger() {
 function intToBinArr(num) {
   b = num.toString(2);
   b = '00000000'.substr(b.length) + b;
-  return b.split('');
+  b = b.split('');
+  b = b.map((x) => parseInt(x));
+  return b;
 }
 
 function binArrToBinStr(binArr) {

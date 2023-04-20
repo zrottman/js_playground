@@ -93,6 +93,21 @@ function render() {
   updateByteButtons();
   renderBinary();
   renderInteger();
+  renderOutput();
+}
+
+function renderOutput() {
+  const outputDiv = document.getElementById("output");
+
+  let logic = document.querySelector('input[name="logic"]:checked').value;
+  if (logic === 'AND') {
+    logic = '&';
+  } else if (logic === 'OR') {
+    logic = '|'; 
+  } else if (logic === 'XOR') {
+    logic = '^';
+  }
+  outputDiv.innerHTML = `<code>${binArrToInt(byteA)} ${logic} ${binArrToInt(byteB)} = ${binArrToInt(byteY)}</code>`;
 }
 
 function updateByteY() {

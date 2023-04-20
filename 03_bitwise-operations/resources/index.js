@@ -1,3 +1,76 @@
+class Byte {
+  constructor() {
+    this.binArr = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    // this.bitsEls
+    // this.binaryEl
+    // this.intEl
+    // this.operatorsEl
+  }
+
+  flipBit(i) {
+    // Flip big `i` of `this.binArr`
+    console.log(`flipping bit ${i}`);
+    this.binArr[i] = this.binArr[i] ? 0: 1;
+  }
+
+  toBinStr() {
+  // Output `this.binArr` as binary string
+    return `0b${this.binArr.join('')}`;
+  }
+
+  toInt() {
+  // Output `this.binArr` as integer 
+    return Number(this.toBinStr());
+  }
+
+  updateBinArr(num) {
+  // Translate int input `num` to binary and update `this.binArr`
+    let s = num.toString(2);
+    s = '00000000'.substr(s.length) + s;
+    s = s.split('');
+    s = s.map((x) => parseInt(x));
+    this.binArr = s;
+    if (this.binArr.length > 8) { this.binArr.shift(); }
+  }
+
+  shiftLeft() {
+  // Shift bits left one place
+    let i = this.toInt();
+    i <<= 1;
+    this.updateBinArr(i);
+  }
+
+  shiftRight() {
+  // Shift bits right one place
+    let i = this.toInt();
+    i >>= 1;
+    this.updateBinArr(i);
+  }
+  
+  operate(byteA, byteB, logic) {
+  // Perform logical operation `logic` on `byteA` and `byteB`, and update
+  // `this.binArr` with result
+    let outInt;
+    if (logic === 'AND') {
+      outInt = byteA.toInt() & byteB.toInt();
+    } else if (logic === 'OR') {
+      outInt = byteA.toInt() | byteB.toInt(); 
+    } else if (logic === 'XOR') {
+      outInt = byteA.toInt() ^ byteB.toInt();
+    }
+    this.updateBinArr(outInt);
+
+  }
+
+
+}
+
+let byteA = new Byte;
+let byteB = new Byte;
+let byteY = new Byte;
+
+/*
 // Arrays to hold states of input and output bytes
 let byteA = [0, 0, 0, 0, 0, 0, 0, 0];
 let byteB = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -164,3 +237,4 @@ function binStrToInt(binStr) {
 function binArrToInt(binArr) {
   return binStrToInt(binArrToBinStr(binArr));
 }
+*/

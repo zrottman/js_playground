@@ -6,6 +6,11 @@ let byteY = [0, 0, 0, 0, 0, 0, 0, 0];
 // Byte divs
 const byteDivs = document.querySelectorAll(".byte");
 const byteYBits = document.querySelector('.byte-Y').children;
+const byteABits = document.querySelector('.byte.byte-A').children;
+const byteBBits = document.querySelector('.byte.byte-B').children;
+
+// Operator divs
+const operatorDivs = document.querySelectorAll(".operators");
 
 // Binary and integer divs for rendering
 const byteABinary = document.querySelector(".binary.byte-A");
@@ -44,12 +49,48 @@ for (let byteDiv of byteDivs) {
   }
 }
 
+// Create bit shift buttons
+
+for (let operatorDiv of operatorDivs) {
+  if (operatorDiv.classList.contains("input")) {
+    const shiftLeft = document.createElement("button");
+    const shiftRight = document.createElement("button");
+    shiftLeft.innerText = '<<';
+    shiftRight.innerText = '>>';
+    shiftLeft.addEventListener("click", function () {
+      if (operatorDiv.classList.contains("byte-A")) {
+        let byteAInt = binArrToInt(byteA);
+        byteAInt <<= 1;
+        byteA = intToBinArr(byteAInt);
+      } else {
+        let byteBInt = binArrToInt(byteB);
+        byteBInt <<= 1;
+        byteB = intToBinArr(byteBInt);
+      }
+      render();
+    });
+    shiftRight.addEventListener("click", function () {
+      if (operatorDiv.classList.contains("byte-A")) {
+        let byteAInt = binArrToInt(byteA);
+        byteAInt >>= 1;
+        byteA = intToBinArr(byteAInt);
+      } else {
+        let byteBInt = binArrToInt(byteB);
+        byteBInt >>= 1;
+        byteB = intToBinArr(byteBInt);
+      }
+      render();
+    });
+    operatorDiv.append(shiftLeft, shiftRight);
+  }
+}
+
 render();
 
 
 function render() {
   updateByteY();
-  updateByteYButtons();
+  updateByteButtons();
   renderBinary();
   renderInteger();
 }
@@ -68,9 +109,11 @@ function updateByteY() {
   }
 }
 
-function updateByteYButtons() {
+function updateByteButtons() {
   for (let i = 0; i < 8; i++) {
     byteYBits[i].classList.toggle("toggle", byteY[i] == 1);
+    byteABits[i].classList.toggle("toggle", byteA[i] == 1);
+    byteBBits[i].classList.toggle("toggle", byteB[i] == 1);
   }
 }
 

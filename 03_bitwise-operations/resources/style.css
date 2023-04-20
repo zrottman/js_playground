@@ -6,7 +6,10 @@ body {
 #container {
   width: 600px;
   margin: 20px auto;
-  background: yellow;
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
+  align-items: center;
+  justify-content: left;
 }
 
 .byte {
@@ -20,12 +23,12 @@ body {
   height: 50px;
   width: 50px;
   border: 1px solid black;
-  background: red;
+  background: white;
   border-radius: 25px;
 }
 
 .bit.toggle {
-  background-color: #CCC;
+  background-color: red;
 }
 
 

@@ -47,3 +47,10 @@ body {
 .operators button:active {
   background-color:pink;
 }
+
+#output {
+  grid-column: 2;
+  justify-self: center;
+  padding: 20px;
+  border: 1px solid black;
+}

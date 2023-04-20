@@ -6,25 +6,37 @@
 </head>
 <body>
   <div id="container">
+
+    <div class="operators">
+      <button>&lt;&lt;</button>
+      <button>&gt;&gt;</button>
+    </div>
     <div class="byte input byte-A"></div>
     <div class="binary byte-A"></div>
     <div class="integer byte-A"></div>
+    
+    <div class="operators">
+      <button>&lt;&lt;</button>
+      <button>&gt;&gt;</button>
+    </div>
     <div class="byte input byte-B"></div>
     <div class="binary byte-B"></div>
     <div class="integer byte-B"></div>
+
+    <div class="operators" id="logic">
+      <input type="radio" id="AND" name="logic" value="AND" checked="checked">
+      <label for="AND">AND</label>
+
+      <input type="radio" id="OR" name="logic" value="OR">
+      <label for="OR">OR</label>
+
+      <input type="radio" id="XOR" name="logic" value="XOR">
+      <label for="XOR">XOR</label>
+    </div>
     <div class="byte output byte-Y"></div>
     <div class="binary byte-Y"></div>
     <div class="integer byte-Y"></div>
-  </div>
-  <div id="operators">
-    <input type="radio" id="AND" name="operator" value="AND" checked="checked">
-    <label for="AND">AND</label>
 
-    <input type="radio" id="OR" name="operator" value="OR">
-    <label for="OR">OR</label>
-
-    <input type="radio" id="XOR" name="operator" value="XOR">
-    <label for="XOR">XOR</label>
   </div>
   <script src="resources/index.js"></script>
 </body>

@@ -1,13 +1,14 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Courier', monospace;
 }
 
 #container {
-  width: 600px;
+  width: 800px;
   margin: 20px auto;
   display: grid;
-  grid-template-columns: 5fr 1fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr 1fr;
   align-items: center;
   justify-content: left;
 }
@@ -31,5 +32,18 @@ body {
   background-color: red;
 }
 
+.operators {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: start;
+}
 
+.operators button {
+  width: 60%;
+  background-color: yellow;
+  border: 1px solid black;
+}
 
+.operators button:active {
+  background-color:pink;
+}

@@ -16,9 +16,9 @@ const byteAInt= document.querySelector(".integer.byte-A");
 const byteBInt= document.querySelector(".integer.byte-B");
 const byteYInt= document.querySelector(".integer.byte-Y");
 
-// Operator buttons
-const operatorBtns = document.getElementById("operators");
-operatorBtns.addEventListener('change', () => {
+// Logic buttons
+const logicBtns = document.getElementById("logic");
+logicBtns.addEventListener('change', () => {
   render();
 });
 
@@ -57,13 +57,13 @@ function render() {
 function updateByteY() {
   let byteAInt = binArrToInt(byteA);
   let byteBInt = binArrToInt(byteB);
-  let operator = document.querySelector('input[name="operator"]:checked').value;
+  let logic = document.querySelector('input[name="logic"]:checked').value;
 
-  if (operator === 'AND') {
+  if (logic === 'AND') {
     byteY = intToBinArr(byteAInt & byteBInt);
-  } else if (operator === 'OR') {
+  } else if (logic === 'OR') {
     byteY = intToBinArr(byteAInt | byteBInt);
-  } else if (operator === 'XOR') {
+  } else if (logic === 'XOR') {
     byteY = intToBinArr(byteAInt ^ byteBInt);
   }
 }

@@ -1,7 +1,7 @@
 class Byte {
 
   constructor(name) {
-    this.binArr = new Array(8).fill(0); // [0, 0, 0, 0, 0, 0, 0, 0];
+    this.binArr = new Array(8).fill(0); // -> [0, 0, 0, 0, 0, 0, 0, 0]
     this.name = name;
 
     this.draw();
@@ -37,6 +37,7 @@ class Byte {
     this.drawBinDiv(containerDiv);
     this.drawIntDiv(containerDiv);
   }
+
 
   drawBinDiv(containerDiv) {
     // Draw binary div
@@ -203,6 +204,17 @@ class OutputByte extends Byte {
     this.operatorsDiv = document.createElement("div");
     this.operatorsDiv.classList.add("operators");
     this.operatorsDiv.classList.add(this.name);
+    this.operatorsDiv.setAttribute('id', 'logic');
+    this.operatorsDiv.innerHTML = `
+      <input type="radio" id="AND" name="logic" value="AND" checked="checked">
+      <label for="AND">AND</label>
+ 
+      <input type="radio" id="OR" name="logic" value="OR">
+      <label for="OR">OR</label>
+
+      <input type="radio" id="XOR" name="logic" value="XOR">
+      <label for="XOR">XOR</label>
+    `;
     containerDiv.appendChild(this.operatorsDiv);
   }
 

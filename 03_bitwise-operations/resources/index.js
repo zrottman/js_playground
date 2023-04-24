@@ -1,7 +1,10 @@
 class Byte {
-  constructor() {
+  constructor(name, isInputByte = true) {
     this.binArr = [0, 0, 0, 0, 0, 0, 0, 0];
+    this.isInputByte = isInputByte; // Boolean to specify whether this is an input byte
+    this.name = name;
 
+    this.draw();
     // this.bitsEls
     // this.binaryEl
     // this.intEl
@@ -60,15 +63,36 @@ class Byte {
       outInt = byteA.toInt() ^ byteB.toInt();
     }
     this.updateBinArr(outInt);
-
   }
+
+  draw() {
+    const byteDiv = document.createElement("div");
+    const self = this;
+    byteDiv.classList.add(this.name);
+    for (let i = 0; i < 8; i++) {
+      const bitBtn = document.createElement("button");
+      bitBtn.classList.add("bit");
+      bitBtn.classList.add(`bit-${i}`);
+      if (this.isInputByte) {
+        bitBtn.addEventListener("click", function() {
+          self.binArr[i] = self.binArr[i] ? 0 : 1;
+          this.classList.toggle("toggle", self.binArr[i] == 1);
+          // render
+        });
+      }
+      byteDiv.appendChild(bitBtn);
+    }
+    document.getElementById("container2").appendChild(byteDiv);
+  }
+
+
 
 
 }
 
-let byteA = new Byte;
-let byteB = new Byte;
-let byteY = new Byte;
+let byteA = new Byte("byte-A");
+let byteB = new Byte("byte-B");
+let byteY = new Byte("byte-Y", isInputByte = false);
 
 /*
 // Arrays to hold states of input and output bytes

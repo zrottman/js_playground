@@ -1,30 +1,28 @@
 class Byte {
-  constructor(name, isInputByte = true) {
-    this.binArr = [0, 0, 0, 0, 0, 0, 0, 0];
+
+  constructor(name, isInputByte = true, observer = null) {
+    this.binArr = new Array(8).fill(0); // [0, 0, 0, 0, 0, 0, 0, 0];
     this.isInputByte = isInputByte; // Boolean to specify whether this is an input byte
     this.name = name;
+    this.observer = observer; // Reference to observer object, in this case output byte
 
     this.draw();
-    // this.bitsEls
-    // this.binaryEl
-    // this.intEl
-    // this.operatorsEl
+    this.render();
   }
 
   flipBit(i) {
-    // Flip big `i` of `this.binArr`
-    console.log(`flipping bit ${i}`);
+    // Flip bit `i` of `this.binArr`
     this.binArr[i] = this.binArr[i] ? 0: 1;
   }
 
   toBinStr() {
   // Output `this.binArr` as binary string
-    return `0b${this.binArr.join('')}`;
+    return this.binArr.join('');
   }
 
   toInt() {
   // Output `this.binArr` as integer 
-    return Number(this.toBinStr());
+    return Number(`0b${this.toBinStr()}`);
   }
 
   updateBinArr(num) {
@@ -55,6 +53,7 @@ class Byte {
   // Perform logical operation `logic` on `byteA` and `byteB`, and update
   // `this.binArr` with result
     let outInt;
+    
     if (logic === 'AND') {
       outInt = byteA.toInt() & byteB.toInt();
     } else if (logic === 'OR') {
@@ -62,30 +61,87 @@ class Byte {
     } else if (logic === 'XOR') {
       outInt = byteA.toInt() ^ byteB.toInt();
     }
+    
     this.updateBinArr(outInt);
+    this.render();
+    
   }
 
   draw() {
-    const byteDiv = document.createElement("div");
     const self = this;
-    byteDiv.classList.add(this.name);
+    const containerDiv = document.getElementById("container2");
+
+    this.drawOperatorsDiv(self, containerDiv);
+    this.drawByteDiv(self, containerDiv);
+    this.drawBinDiv(containerDiv);
+    this.drawIntDiv(containerDiv);
+  }
+
+  drawOperatorsDiv(byteObj, containerDiv) {
+    // Draw operators div
+    this.operatorsDiv = document.createElement("div");
+    this.operatorsDiv.classList.add("operators");
+    this.operatorsDiv.classList.add(this.name);
+    const shiftLeft = document.createElement("button");
+    const shiftRight = document.createElement("button");
+    shiftLeft.innerText = '<<';
+    shiftRight.innerText = '>>';
+    shiftLeft.addEventListener("click", function() {
+      byteObj.shiftLeft()
+      byteObj.render();
+    });
+    shiftRight.addEventListener("click", function() {
+      byteObj.shiftRight();
+      byteObj.render();
+    });
+    this.operatorsDiv.append(shiftLeft, shiftRight);
+    containerDiv.appendChild(this.operatorsDiv);
+  }
+
+  drawByteDiv(byteObj, containerDiv) {
+    // Draw byte div
+    this.byteDiv = document.createElement("div");
+    this.byteDiv.classList.add(this.name);
     for (let i = 0; i < 8; i++) {
       const bitBtn = document.createElement("button");
       bitBtn.classList.add("bit");
       bitBtn.classList.add(`bit-${i}`);
       if (this.isInputByte) {
         bitBtn.addEventListener("click", function() {
-          self.binArr[i] = self.binArr[i] ? 0 : 1;
-          this.classList.toggle("toggle", self.binArr[i] == 1);
-          // render
+          byteObj.flipBit(i);
+          byteObj.render();
         });
       }
-      byteDiv.appendChild(bitBtn);
+      this.byteDiv.appendChild(bitBtn);
     }
-    document.getElementById("container2").appendChild(byteDiv);
+    this.bitDivs = this.byteDiv.children;
+    containerDiv.appendChild(this.byteDiv);
+  }
+  
+  drawBinDiv(containerDiv) {
+    // Draw binary div
+    this.binDiv = document.createElement("div");
+    this.binDiv.classList.add("binary");
+    this.binDiv.classList.add(this.name);
+    containerDiv.appendChild(this.binDiv);
   }
 
+  drawIntDiv(containerDiv) {
+    // Draw integer div
+    this.intDiv = document.createElement("div");
+    this.intDiv.classList.add("integer");
+    this.intDiv.classList.add(this.name);
+    containerDiv.appendChild(this.intDiv);
+  }
 
+  render() {
+    for (let i = 0; i < 8; i++ ) {
+      this.bitDivs[i].classList.toggle("toggle", this.binArr[i] == 1);
+    }
+    this.binDiv.textContent = this.toBinStr();
+    this.intDiv.textContent = this.toInt();
+    //console.log(this.outputY.name);
+  }
 
 
 }
@@ -93,6 +149,8 @@ class Byte {
 let byteA = new Byte("byte-A");
 let byteB = new Byte("byte-B");
 let byteY = new Byte("byte-Y", isInputByte = false);
+byteA.observer = byteY;
+byteB.observer = byteY;
 
 /*
 // Arrays to hold states of input and output bytes

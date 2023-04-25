@@ -1,8 +1,9 @@
 class Byte {
 
-  constructor(name) {
+  constructor(name, displayText) {
     this.binArr = new Array(8).fill(0); // -> [0, 0, 0, 0, 0, 0, 0, 0]
     this.name = name;
+    this.displayText = displayText;
 
     this.draw();
     this.render();
@@ -32,12 +33,19 @@ class Byte {
     const self = this;
     const containerDiv = document.getElementById("container");
 
+    this.drawRowNameDiv(containerDiv);
     this.drawOperatorsDiv(self, containerDiv);
     this.drawByteDiv(self, containerDiv);
     this.drawBinDiv(containerDiv);
     this.drawIntDiv(containerDiv);
   }
 
+  drawRowNameDiv(containerDiv) {
+    this.rowNameDiv = document.createElement("div");
+    this.rowNameDiv.classList.add("row-name");
+    this.rowNameDiv.textContent = this.displayText;
+    containerDiv.appendChild(this.rowNameDiv);
+  }
 
   drawBinDiv(containerDiv) {
     // Draw binary div
@@ -66,8 +74,8 @@ class Byte {
 
 
 class InputByte extends Byte {
-  constructor(name) {
-    super(name);
+  constructor(name, displayText) {
+    super(name, displayText);
     this.observers = [];
   }
 
@@ -151,8 +159,8 @@ class InputByte extends Byte {
 
 
 class OutputByte extends Byte {
-  constructor(name, inputByteA, inputByteB) {
-    super(name);
+  constructor(name, displayText, inputByteA, inputByteB) {
+    super(name, displayText);
     this.inputByteA = inputByteA;
     this.inputByteB = inputByteB;
     this.update();
@@ -223,9 +231,9 @@ class OutputByte extends Byte {
 }
 
 
-let byteA = new InputByte("byte-a");
-let byteB = new InputByte("byte-b");
-let byteY = new OutputByte("byte-y", byteA, byteB);
+let byteA = new InputByte("byte-a", "Input A");
+let byteB = new InputByte("byte-b", "Input B");
+let byteY = new OutputByte("byte-y", "Output Y", byteA, byteB);
 
 byteA.attach(byteY);
 byteB.attach(byteY);

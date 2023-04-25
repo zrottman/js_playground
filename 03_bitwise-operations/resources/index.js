@@ -177,7 +177,7 @@ class OutputByte extends Byte {
     } else if (logic == "XOR") {
       this.updateBinArr(byteAInt ^ byteBInt);
       logic = "^";
-    }
+    } 
     this.render();
     
     const outputDiv = document.getElementById("output");

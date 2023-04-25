@@ -17,9 +17,18 @@ body {
   color: var(--txt-color);
 }
 
-#container {
+h1 {
+  margin:  0;
+}
+
+#wrapper {
   width: 800px;
   margin: 20px auto;
+}
+
+#container {
+  width: 100%;
+  margin: 50px auto;
   display: grid;
   grid-template-columns: 1fr 1fr 5fr 1fr .5fr;
   align-items: center;
@@ -75,4 +84,11 @@ body {
   width: 100%;
   border: 1px solid var(--border-color);
   background: var(--dialog-bg-color);
+}
+
+header, section {
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  background-color: var(--bit-off-color);
+  color: var(--txt-color);
 }

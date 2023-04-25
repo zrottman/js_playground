@@ -5,8 +5,40 @@
   <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
-  <div id="container">
-    <div id="output"></div>
+  <div id="wrapper">
+    <header id="header">
+      <h1>Manip' the Bit</h1>
+      <p>A lil' tool for fellow hex-crazed freaks to develop better intuition for bit manipulation and bitwise operations.</p>
+    </header>
+    <div id="container">
+      <div id="output"></div>
+    </div>
+    <section id="faq">
+      <h1>Getting Started</h1>
+      <p><b>What are bits?</b></P>
+      <p>Bits are the smallest units of information in computers. They can have only two values: 0 or 1. Bits are used to represent data in computers and to perform logical operations.</p>
+
+      <p><b>What are bitwise operations?</b><p>
+      <p>Bitwise operations are operations that manipulate the bits of a number. There are four bitwise operators: AND, OR, XOR, and NOT. These operators allow you to combine, modify, or extract specific bits from a number.</p>
+
+      <p><b>What is the AND operator?</b></p>
+      <p>The AND operator returns 1 if both input bits are 1, otherwise it returns 0. This operator is commonly used to mask out specific bits from a number or to test if a specific bit is set.</p>
+
+      <p><b>What is the OR operator?</b></p>
+      <p>The OR operator returns 1 if at least one input bit is 1, otherwise it returns 0. This operator is commonly used to set specific bits in a number or to combine multiple values into a single value.</p>
+
+      <p><b>What is the XOR operator?</b></p>
+      <p>The XOR operator returns 1 if the input bits are different, otherwise it returns 0. This operator is commonly used to toggle specific bits in a number or to compare two values for equality.<p>
+
+      <p><b>What is the NOT operator?</b></p>
+      <p>The NOT operator returns the inverse of the input bit. It returns 0 if the input bit is 1, and 1 if the input bit is 0. This operator is commonly used to invert specific bits in a number.</p>
+
+      <p><b>What is bit shifting?</b></p>
+      <p>Bit shifting is a bitwise operation that moves the bits of a number to the left or right. When you shift a bit to the left, you double its value. When you shift a bit to the right, you halve its value. Bit shifting is commonly used to perform fast multiplication or division by powers of two.</p>
+
+      <p><b>How do I use this app to learn about bitwise operations?</b></p>
+      <p>To use this app, you can toggle the buttons to turn the bits on or off, and use the shift left and shift right buttons to shift the bits. You can also select the AND, OR, or XOR radio button to perform a logical operation on the two input bits, and see the result in the output bit. Play around with different combinations of bits and logical operators to see how they behave!</p>
+    </section>
   </div>
   <script src="resources/index.js"></script>
 </body>

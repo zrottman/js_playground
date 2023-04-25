@@ -162,7 +162,9 @@ class OutputByte extends Byte {
   constructor(name, displayText, inputByteA, inputByteB) {
     super(name, displayText);
     this.inputByteA = inputByteA;
+    this.inputByteA.attach(this);
     this.inputByteB = inputByteB;
+    this.inputByteB.attach(this);
     this.update();
 
     this.logicBtns = document.getElementById("logic");
@@ -234,6 +236,3 @@ class OutputByte extends Byte {
 let byteA = new InputByte("byte-a", "Input A");
 let byteB = new InputByte("byte-b", "Input B");
 let byteY = new OutputByte("byte-y", "Output Y", byteA, byteB);
-
-byteA.attach(byteY);
-byteB.attach(byteY);

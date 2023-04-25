@@ -64,8 +64,11 @@ body {
 
 #output {
   grid-column: 2;
+  grid-row: 4;
   justify-self: center;
-  padding: 20px;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
   border: 1px solid var(--border-color);
   background: var(--dialog-bg-color);
 }

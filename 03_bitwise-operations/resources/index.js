@@ -96,6 +96,7 @@ class InputByte extends Byte {
   drawByteDiv(byteObj, containerDiv) {
     // Draw byte div
     this.byteDiv = document.createElement("div");
+    this.byteDiv.classList.add("byte");
     this.byteDiv.classList.add(this.name);
     for (let i = 0; i < 8; i++) {
       const bitBtn = document.createElement("button");
@@ -188,6 +189,7 @@ class OutputByte extends Byte {
   drawByteDiv(byteObj, containerDiv) {
     // Draw byte div
     this.byteDiv = document.createElement("div");
+    this.byteDiv.classList.add("byte");
     this.byteDiv.classList.add(this.name);
     for (let i = 0; i < 8; i++) {
       const bitBtn = document.createElement("button");
